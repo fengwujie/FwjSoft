@@ -34,7 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(888, 597);
+            this.ClientSize = new System.Drawing.Size(950, 644);
             this.Name = "FormRoleInfo";
             this.Text = "角色管理";
             this.ResumeLayout(false);

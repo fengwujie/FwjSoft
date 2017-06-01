@@ -37,6 +37,7 @@
             this.treeListColumn6 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn7 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnAddTopLevel = new DevExpress.XtraEditors.SimpleButton();
             this.btnInsert = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnRefreshSort = new DevExpress.XtraEditors.SimpleButton();
@@ -69,6 +70,7 @@
             this.treeList1.ParentFieldName = "MenuParentId";
             this.treeList1.Size = new System.Drawing.Size(1362, 659);
             this.treeList1.TabIndex = 0;
+            this.treeList1.BeforeFocusNode += new DevExpress.XtraTreeList.BeforeFocusNodeEventHandler(this.treeList1_BeforeFocusNode);
             // 
             // treeListColumn1
             // 
@@ -128,6 +130,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnAddTopLevel);
             this.panelControl1.Controls.Add(this.btnInsert);
             this.panelControl1.Controls.Add(this.btnSave);
             this.panelControl1.Controls.Add(this.btnRefreshSort);
@@ -141,9 +144,18 @@
             this.panelControl1.Size = new System.Drawing.Size(1362, 55);
             this.panelControl1.TabIndex = 1;
             // 
+            // btnAddTopLevel
+            // 
+            this.btnAddTopLevel.Location = new System.Drawing.Point(12, 8);
+            this.btnAddTopLevel.Name = "btnAddTopLevel";
+            this.btnAddTopLevel.Size = new System.Drawing.Size(86, 37);
+            this.btnAddTopLevel.TabIndex = 8;
+            this.btnAddTopLevel.Text = "新增顶级";
+            this.btnAddTopLevel.Click += new System.EventHandler(this.btnAddTopLevel_Click);
+            // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(129, 7);
+            this.btnInsert.Location = new System.Drawing.Point(222, 8);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(86, 37);
             this.btnInsert.TabIndex = 7;
@@ -152,7 +164,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(341, 7);
+            this.btnSave.Location = new System.Drawing.Point(432, 8);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(86, 37);
             this.btnSave.TabIndex = 6;
@@ -161,7 +173,7 @@
             // 
             // btnRefreshSort
             // 
-            this.btnRefreshSort.Location = new System.Drawing.Point(659, 7);
+            this.btnRefreshSort.Location = new System.Drawing.Point(747, 8);
             this.btnRefreshSort.Name = "btnRefreshSort";
             this.btnRefreshSort.Size = new System.Drawing.Size(86, 37);
             this.btnRefreshSort.TabIndex = 5;
@@ -170,7 +182,7 @@
             // 
             // btnMoveDown
             // 
-            this.btnMoveDown.Location = new System.Drawing.Point(553, 7);
+            this.btnMoveDown.Location = new System.Drawing.Point(642, 8);
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Size = new System.Drawing.Size(86, 37);
             this.btnMoveDown.TabIndex = 4;
@@ -179,7 +191,7 @@
             // 
             // btnMoveUp
             // 
-            this.btnMoveUp.Location = new System.Drawing.Point(447, 7);
+            this.btnMoveUp.Location = new System.Drawing.Point(537, 8);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Size = new System.Drawing.Size(86, 37);
             this.btnMoveUp.TabIndex = 3;
@@ -188,7 +200,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(235, 7);
+            this.btnDelete.Location = new System.Drawing.Point(327, 8);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(86, 37);
             this.btnDelete.TabIndex = 1;
@@ -197,7 +209,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(23, 7);
+            this.btnAdd.Location = new System.Drawing.Point(117, 8);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(86, 37);
             this.btnAdd.TabIndex = 0;
@@ -240,5 +252,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn7;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraEditors.SimpleButton btnInsert;
+        private DevExpress.XtraEditors.SimpleButton btnAddTopLevel;
     }
 }

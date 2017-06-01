@@ -191,6 +191,8 @@ namespace FwjSoft.DAL
 		/// </summary>
 		public FwjSoft.Model.MenuInfoModel DataRowToModel(DataRow row)
 		{
+            return Common.Mapper.ToEntity<Model.MenuInfoModel>(row);
+            /*
 			FwjSoft.Model.MenuInfoModel model=new FwjSoft.Model.MenuInfoModel();
 			if (row != null)
 			{
@@ -231,6 +233,7 @@ namespace FwjSoft.DAL
                 }
             }
 			return model;
+            */
 		}
 
 		/// <summary>
@@ -245,6 +248,7 @@ namespace FwjSoft.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
+            strSql.Append(" order by MenuSort");
 			return DbHelperSQL.Query(strSql.ToString());
 		}
 

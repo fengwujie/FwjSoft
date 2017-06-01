@@ -24,10 +24,10 @@ namespace FwjSoft.Common
             return entity;
         }
 
-        public static T ToEntity<T>(DataRow adaptedRow, T value) where T : new()
+        public static T ToEntity<T>(DataRow adaptedRow) where T : new()//, T value
         {
             T item = new T();
-            if (value == null || adaptedRow == null)
+            if (adaptedRow == null)//value == null || 
             {
                 return item;
             }
