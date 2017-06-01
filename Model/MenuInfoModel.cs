@@ -16,11 +16,13 @@ namespace FwjSoft.Model
 		private string _menufrmname;
 		private int _menuparentid;
 		private bool _menuuse= true;
+        private bool _menubig = false;
         private int _menusort = 0;
-		/// <summary>
-		/// 菜单ID
-		/// </summary>
-		public int MenuId
+        private byte[] _menubigimage;
+        /// <summary>
+        /// 菜单ID
+        /// </summary>
+        public int MenuId
 		{
 			set{ _menuid=value;}
 			get{return _menuid;}
@@ -72,6 +74,22 @@ namespace FwjSoft.Model
         {
             set { _menusort = value; }
             get { return _menusort; }
+        }
+        /// <summary>
+        /// 是否显示大菜单
+        /// </summary>
+        public bool MenuBig
+        {
+            set { _menubig = value; }
+            get { return _menubig; }
+        }
+        /// <summary>
+        /// 大菜单图片
+        /// </summary>
+        public byte[] MenuBigImage
+        {
+            set { _menubigimage = value; }
+            get { return _menubigimage; }
         }
         #endregion Model
 

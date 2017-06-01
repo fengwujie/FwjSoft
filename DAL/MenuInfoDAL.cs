@@ -38,87 +38,95 @@ namespace FwjSoft.DAL
 			return DbHelperSQL.Exists(strSql.ToString(),parameters);
 		}
 
-
-		/// <summary>
+        /// <summary>
 		/// 增加一条数据
 		/// </summary>
 		public int Add(FwjSoft.Model.MenuInfoModel model)
-		{
-			StringBuilder strSql=new StringBuilder();
-			strSql.Append("insert into MenuInfo(");
-			strSql.Append("MenuName,MenuSpaceName,MenuFrmName,MenuParentId,MenuUse,MenuSort)");
-			strSql.Append(" values (");
-			strSql.Append("@MenuName,@MenuSpaceName,@MenuFrmName,@MenuParentId,@MenuUse,@MenuSort)");
-			strSql.Append(";select @@IDENTITY");
-			SqlParameter[] parameters = {
-					new SqlParameter("@MenuName", SqlDbType.VarChar,50),
-					new SqlParameter("@MenuSpaceName", SqlDbType.VarChar,50),
-					new SqlParameter("@MenuFrmName", SqlDbType.VarChar,50),
-					new SqlParameter("@MenuParentId", SqlDbType.Int,4),
-					new SqlParameter("@MenuUse", SqlDbType.Bit,1),
-                    new SqlParameter("@MenuSort",SqlDbType.Int)};
-			parameters[0].Value = model.MenuName;
-			parameters[1].Value = model.MenuSpaceName;
-			parameters[2].Value = model.MenuFrmName;
-			parameters[3].Value = model.MenuParentId;
-			parameters[4].Value = model.MenuUse;
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("insert into MenuInfo(");
+            strSql.Append("MenuName,MenuSpaceName,MenuFrmName,MenuParentId,MenuUse,MenuSort,MenuBig,MenuBigImage)");
+            strSql.Append(" values (");
+            strSql.Append("@MenuName,@MenuSpaceName,@MenuFrmName,@MenuParentId,@MenuUse,@MenuSort,@MenuBig,@MenuBigImage)");
+            strSql.Append(";select @@IDENTITY");
+            SqlParameter[] parameters = {
+                    new SqlParameter("@MenuName", SqlDbType.VarChar,50),
+                    new SqlParameter("@MenuSpaceName", SqlDbType.VarChar,50),
+                    new SqlParameter("@MenuFrmName", SqlDbType.VarChar,50),
+                    new SqlParameter("@MenuParentId", SqlDbType.Int,4),
+                    new SqlParameter("@MenuUse", SqlDbType.Bit,1),
+                    new SqlParameter("@MenuSort", SqlDbType.Int,4),
+                    new SqlParameter("@MenuBig", SqlDbType.Bit,1),
+                    new SqlParameter("@MenuBigImage", SqlDbType.Image)};
+            parameters[0].Value = model.MenuName;
+            parameters[1].Value = model.MenuSpaceName;
+            parameters[2].Value = model.MenuFrmName;
+            parameters[3].Value = model.MenuParentId;
+            parameters[4].Value = model.MenuUse;
             parameters[5].Value = model.MenuSort;
+            parameters[6].Value = model.MenuBig;
+            parameters[7].Value = model.MenuBigImage;
 
-            object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
-			if (obj == null)
-			{
-				return 0;
-			}
-			else
-			{
-				return Convert.ToInt32(obj);
-			}
-		}
-		/// <summary>
-		/// 更新一条数据
-		/// </summary>
-		public bool Update(FwjSoft.Model.MenuInfoModel model)
-		{
-			StringBuilder strSql=new StringBuilder();
-			strSql.Append("update MenuInfo set ");
-			strSql.Append("MenuName=@MenuName,");
-			strSql.Append("MenuSpaceName=@MenuSpaceName,");
-			strSql.Append("MenuFrmName=@MenuFrmName,");
-			strSql.Append("MenuParentId=@MenuParentId,");
-			strSql.Append("MenuUse=@MenuUse,");
-            strSql.Append("MenuSort=@MenuSort");
-			strSql.Append(" where MenuId=@MenuId");
-			SqlParameter[] parameters = {
-					new SqlParameter("@MenuName", SqlDbType.VarChar,50),
-					new SqlParameter("@MenuSpaceName", SqlDbType.VarChar,50),
-					new SqlParameter("@MenuFrmName", SqlDbType.VarChar,50),
-					new SqlParameter("@MenuParentId", SqlDbType.Int,4),
-					new SqlParameter("@MenuUse", SqlDbType.Bit,1),
-                    new SqlParameter("@MenuSort",SqlDbType.Int),
-					new SqlParameter("@MenuId", SqlDbType.Int,4)};
-			parameters[0].Value = model.MenuName;
-			parameters[1].Value = model.MenuSpaceName;
-			parameters[2].Value = model.MenuFrmName;
-			parameters[3].Value = model.MenuParentId;
-			parameters[4].Value = model.MenuUse;
+            object obj = DbHelperSQL.GetSingle(strSql.ToString(), parameters);
+            if (obj == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return Convert.ToInt32(obj);
+            }
+        }
+        /// <summary>
+        /// 更新一条数据
+        /// </summary>
+        public bool Update(FwjSoft.Model.MenuInfoModel model)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("update MenuInfo set ");
+            strSql.Append("MenuName=@MenuName,");
+            strSql.Append("MenuSpaceName=@MenuSpaceName,");
+            strSql.Append("MenuFrmName=@MenuFrmName,");
+            strSql.Append("MenuParentId=@MenuParentId,");
+            strSql.Append("MenuUse=@MenuUse,");
+            strSql.Append("MenuSort=@MenuSort,");
+            strSql.Append("MenuBig=@MenuBig,");
+            strSql.Append("MenuBigImage=@MenuBigImage");
+            strSql.Append(" where MenuId=@MenuId");
+            SqlParameter[] parameters = {
+                    new SqlParameter("@MenuName", SqlDbType.VarChar,50),
+                    new SqlParameter("@MenuSpaceName", SqlDbType.VarChar,50),
+                    new SqlParameter("@MenuFrmName", SqlDbType.VarChar,50),
+                    new SqlParameter("@MenuParentId", SqlDbType.Int,4),
+                    new SqlParameter("@MenuUse", SqlDbType.Bit,1),
+                    new SqlParameter("@MenuSort", SqlDbType.Int,4),
+                    new SqlParameter("@MenuBig", SqlDbType.Bit,1),
+                    new SqlParameter("@MenuBigImage", SqlDbType.Image),
+                    new SqlParameter("@MenuId", SqlDbType.Int,4)};
+            parameters[0].Value = model.MenuName;
+            parameters[1].Value = model.MenuSpaceName;
+            parameters[2].Value = model.MenuFrmName;
+            parameters[3].Value = model.MenuParentId;
+            parameters[4].Value = model.MenuUse;
             parameters[5].Value = model.MenuSort;
-            parameters[6].Value = model.MenuId;
+            parameters[6].Value = model.MenuBig;
+            parameters[7].Value = model.MenuBigImage;
+            parameters[8].Value = model.MenuId;
 
-			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
-			if (rows > 0)
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-
-		/// <summary>
-		/// 删除一条数据
-		/// </summary>
-		public bool Delete(int MenuId)
+            int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// 删除一条数据
+        /// </summary>
+        public bool Delete(int MenuId)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
@@ -166,7 +174,7 @@ namespace FwjSoft.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 MenuId,MenuName,MenuSpaceName,MenuFrmName,MenuParentId,MenuUse,MenuSort from MenuInfo ");
+			strSql.Append("select  top 1 MenuId,MenuName,MenuSpaceName,MenuFrmName,MenuParentId,MenuUse,MenuSort,MenuBig,MenuBigImage from MenuInfo ");
 			strSql.Append(" where MenuId=@MenuId");
 			SqlParameter[] parameters = {
 					new SqlParameter("@MenuId", SqlDbType.Int,4)
@@ -242,7 +250,7 @@ namespace FwjSoft.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select MenuId,MenuName,MenuSpaceName,MenuFrmName,MenuParentId,MenuUse,MenuSort ");
+			strSql.Append("select MenuId,MenuName,MenuSpaceName,MenuFrmName,MenuParentId,MenuUse,MenuSort,MenuBig,MenuBigImage ");
 			strSql.Append(" FROM MenuInfo ");
 			if(strWhere.Trim()!="")
 			{
@@ -263,7 +271,7 @@ namespace FwjSoft.DAL
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append(" MenuId,MenuName,MenuSpaceName,MenuFrmName,MenuParentId,MenuUse,MenuSort ");
+			strSql.Append(" MenuId,MenuName,MenuSpaceName,MenuFrmName,MenuParentId,MenuUse,MenuSort,MenuBig,MenuBigImage ");
 			strSql.Append(" FROM MenuInfo ");
 			if(strWhere.Trim()!="")
 			{

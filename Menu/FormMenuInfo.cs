@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using FwjSoft.BLL;
 using FwjSoft.Model;
 using DevExpress.XtraTreeList.Nodes;
+using System.IO;
 
 namespace Forms
 {
@@ -297,6 +298,31 @@ namespace Forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            try
+            {
+                using (OpenFileDialog openfile = new OpenFileDialog())
+                {
+                    openfile.Filter = "jpg jpeg图像文件|*.jpg;*.jpeg|Png图像文件(*.png)" + "| *.png |所有文件(*.*)|*.*";
+                    if (openfile.ShowDialog() == DialogResult.OK && (openfile.FileName != ""))
+                    {
+                        FileStream file = new FileStream(openfile.FileName, FileMode.Open, FileAccess.Read);//Layout就是你的strimg 
+                        byte[] xbytes = new byte[file.Length];
+                        file.Read(xbytes, 0, (int)file.Length);
+                        file.Close();
+                        MenuInfoModel model = (MenuInfoModel)this.treeList1.GetDataRecordByNode(this.treeList1.FocusedNode);
+                        model.MenuBigImage = xbytes;
+                    }
+                }
+                GC.Collect();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
     }
