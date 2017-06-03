@@ -54,7 +54,7 @@ namespace Froms
         {
             //InitMainMenu();
             InitMenuStrip();
-
+            InitBarManager();
             /*
             DataTable tableSkin = GetSkinFileName();
             InitCombobox(tableSkin);
@@ -64,15 +64,15 @@ namespace Froms
         }
 
         #region 菜单
-        List<MenuInfoModel> listMenuInfo = new List<MenuInfoModel>();
+        //List<MenuInfoModel> listMenuInfo = new List<MenuInfoModel>();
 
         #region MainMenu
         private void InitMainMenu()
         {
             MainMenu theMenu = new MainMenu();
-            listMenuInfo = new MenuInfoBLL().GetModelList("");
-            if (listMenuInfo == null || listMenuInfo.Count == 0) return;
-            var query = from menu in listMenuInfo
+            //listMenuInfo = new MenuInfoBLL().GetModelList("");
+            if (CacheInfo.listMenuInfoModel() == null || CacheInfo.listMenuInfoModel().Count == 0) return;
+            var query = from menu in CacheInfo.listMenuInfoModel()
                         where (menu.MenuParentId == 0 && menu.MenuUse == true)
                         select menu;
             if (query == null || query.Count() == 0) return;
@@ -87,7 +87,7 @@ namespace Froms
         }
         private void GetMenuItem(MenuItem item, MenuInfoModel model)
         {
-            var query = from menu in listMenuInfo
+            var query = from menu in CacheInfo.listMenuInfoModel()
                         where (menu.MenuParentId == model.MenuId && menu.MenuUse == true)
                         select menu;
             if (query == null || query.Count() == 0) return;
@@ -135,9 +135,9 @@ namespace Froms
         {
             try
             {
-                listMenuInfo = new MenuInfoBLL().GetModelList("");
-                if (listMenuInfo == null || listMenuInfo.Count == 0) return;
-                var query = from menu in listMenuInfo
+                //listMenuInfo = new MenuInfoBLL().GetModelList("");
+                if (CacheInfo.listMenuInfoModel() == null || CacheInfo.listMenuInfoModel().Count == 0) return;
+                var query = from menu in CacheInfo.listMenuInfoModel()
                             where (menu.MenuParentId == 0 && menu.MenuUse == true)
                             select menu;
                 if (query == null || query.Count() == 0) return;
@@ -156,7 +156,7 @@ namespace Froms
         }
         private void GetMenuStripItem(ToolStripMenuItem item, MenuInfoModel model)
         {
-            var query = from menu in listMenuInfo
+            var query = from menu in CacheInfo.listMenuInfoModel()
                         where (menu.MenuParentId == model.MenuId && menu.MenuUse == true)
                         select menu;
             if (query == null || query.Count() == 0) return;
@@ -307,6 +307,27 @@ namespace Froms
 
         #endregion
 
+        #endregion
+
+        #region BarManager
+        private void InitBarManager()
+        {
+            //string[] strMenus = { "系统管理", "会员管理", "财务管理", "报表管理", "基础资料", "货品管理", "客户管理", "物流管理" };
+            var imgindex = 0;
+            Utils.ImageCollection largeImgs;
+            var query = CacheInfo.listMenuInfoModel().Where(p => p.MenuBig == true).ToList();
+            if (query == null || query.Count() == 0) return;
+            foreach (var model in query)
+            {
+                DevExpress.XtraBars.BarLargeButtonItem barLargeItem = new DevExpress.XtraBars.BarLargeButtonItem(barMain, model.MenuName);
+                //barLargeItem.LargeGlyph = largeImgs.Images[imgindex];//也可以设置 barLargeItem.LargeImageIndex,但是效果不是很好，可以试试                
+                barLargeItem.Hint = model.MenuName;
+                barLargeItem.Tag = model.MenuName;
+                imgindex++;
+                barTop.LinksPersistInfo.Add(new DevExpress.XtraBars.LinkPersistInfo(barLargeItem, true));
+                barMain.Items.Add(barLargeItem);
+            }
+        }
         #endregion
 
         /*
