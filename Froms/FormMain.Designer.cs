@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tileVerticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -35,16 +37,19 @@
             this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.arrangeIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.barMain = new DevExpress.XtraBars.BarManager();
+            this.barMain = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barTop = new DevExpress.XtraBars.Bar();
+            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.bar1 = new DevExpress.XtraBars.Bar();
-            this.barTop = new DevExpress.XtraBars.Bar();
-            this.bar3 = new DevExpress.XtraBars.Bar();
+            this.largeImgs = new DevExpress.Utils.ImageCollection(this.components);
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.largeImgs)).BeginInit();
             this.SuspendLayout();
             // 
             // windowsMenu
@@ -118,9 +123,42 @@
             this.barMain.DockControls.Add(this.barDockControlLeft);
             this.barMain.DockControls.Add(this.barDockControlRight);
             this.barMain.Form = this;
+            this.barMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barButtonItem1});
             this.barMain.MainMenu = this.barTop;
-            this.barMain.MaxItemId = 0;
+            this.barMain.MaxItemId = 1;
             this.barMain.StatusBar = this.bar3;
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Tools";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 1;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.Text = "Tools";
+            // 
+            // barTop
+            // 
+            this.barTop.BarName = "Main menu";
+            this.barTop.DockCol = 0;
+            this.barTop.DockRow = 0;
+            this.barTop.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.barTop.FloatLocation = new System.Drawing.Point(223, 206);
+            this.barTop.OptionsBar.MultiLine = true;
+            this.barTop.OptionsBar.UseWholeRow = true;
+            this.barTop.Text = "Main menu";
+            // 
+            // bar3
+            // 
+            this.bar3.BarName = "Status bar";
+            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar3.DockCol = 0;
+            this.bar3.DockRow = 0;
+            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar3.OptionsBar.AllowQuickCustomization = false;
+            this.bar3.OptionsBar.DrawDragBorder = false;
+            this.bar3.OptionsBar.UseWholeRow = true;
+            this.bar3.Text = "Status bar";
             // 
             // barDockControlTop
             // 
@@ -150,32 +188,15 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1386, 51);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 579);
             // 
-            // bar1
+            // largeImgs
             // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.Text = "Tools";
+            this.largeImgs.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("largeImgs.ImageStream")));
             // 
-            // barTop
+            // barButtonItem1
             // 
-            this.barTop.BarName = "Main menu";
-            this.barTop.DockCol = 0;
-            this.barTop.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.barTop.OptionsBar.MultiLine = true;
-            this.barTop.OptionsBar.UseWholeRow = true;
-            this.barTop.Text = "Main menu";
-            // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
+            this.barButtonItem1.Caption = "131";
+            this.barButtonItem1.Id = 0;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // FormMain
             // 
@@ -196,6 +217,7 @@
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.largeImgs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,6 +239,8 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.Utils.ImageCollection largeImgs;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }
 

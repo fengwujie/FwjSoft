@@ -11,6 +11,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using System.Resources;
+using FwjSoft.Common;
 
 namespace Froms
 {
@@ -54,7 +56,7 @@ namespace Froms
         {
             //InitMainMenu();
             InitMenuStrip();
-            InitBarManager();
+            //InitBarManager();
             /*
             DataTable tableSkin = GetSkinFileName();
             InitCombobox(tableSkin);
@@ -313,21 +315,36 @@ namespace Froms
         private void InitBarManager()
         {
             //string[] strMenus = { "系统管理", "会员管理", "财务管理", "报表管理", "基础资料", "货品管理", "客户管理", "物流管理" };
-            var imgindex = 0;
-            Utils.ImageCollection largeImgs;
+            //Utils.ImageCollection largeImgs;
             var query = CacheInfo.listMenuInfoModel().Where(p => p.MenuBig == true).ToList();
             if (query == null || query.Count() == 0) return;
+            string imagePath = Application.StartupPath + "\\TempImage";
+            int imgindex = 0;
+            string fileName = string.Empty;
             foreach (var model in query)
             {
+                if (model.MenuBigImage == null) return;
+                //添加图标到资源文件
+                fileName = string.Format("{0}.png",model.MenuFrmName);
+                ImageTools.CreateImage(imagePath, fileName, model.MenuBigImage);
+                System.Resources.IResourceWriter rw = new System.Resources.ResourceWriter("Resource.resx");
+                rw.AddResource(model.MenuFrmName, (Image)Image.FromStream(new MemoryStream(model.MenuBigImage)).Clone());//Image.FromFile( imagePath + "\\" + fileName)
+                rw.Close();
+                //把资源文件中的图像添加到largeImgs中
+                this.largeImgs.Images.Add((Image)Image.FromStream(new MemoryStream(model.MenuBigImage)).Clone(), model.MenuFrmName);
+                //this.largeImgs.Images.SetKeyName(imgindex, fileName);
+                //创建大图标菜单
                 DevExpress.XtraBars.BarLargeButtonItem barLargeItem = new DevExpress.XtraBars.BarLargeButtonItem(barMain, model.MenuName);
-                //barLargeItem.LargeGlyph = largeImgs.Images[imgindex];//也可以设置 barLargeItem.LargeImageIndex,但是效果不是很好，可以试试                
+                barLargeItem.LargeGlyph = largeImgs.Images[imgindex];//也可以设置 barLargeItem.LargeImageIndex,但是效果不是很好，可以试试                
                 barLargeItem.Hint = model.MenuName;
                 barLargeItem.Tag = model.MenuName;
-                imgindex++;
                 barTop.LinksPersistInfo.Add(new DevExpress.XtraBars.LinkPersistInfo(barLargeItem, true));
                 barMain.Items.Add(barLargeItem);
+                imgindex++;
+                
             }
         }
+        
         #endregion
 
         /*

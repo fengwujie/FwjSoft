@@ -103,6 +103,10 @@
       <Project>{38d7aa58-c95b-449b-86c6-a8073a56e11f}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{E3D8759A-C5EB-402D-9F10-F5C6029A8D1A}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{53995dbb-9836-4647-ad22-865884fdeb9e}</Project>
       <Name>Model</Name>

@@ -10,6 +10,7 @@ using FwjSoft.BLL;
 using FwjSoft.Model;
 using DevExpress.XtraTreeList.Nodes;
 using System.IO;
+using FwjSoft.Common;
 
 namespace Forms
 {
@@ -310,12 +311,16 @@ namespace Forms
                     openfile.Filter = "jpg jpeg图像文件|*.jpg;*.jpeg|Png图像文件(*.png)" + "| *.png |所有文件(*.*)|*.*";
                     if (openfile.ShowDialog() == DialogResult.OK && (openfile.FileName != ""))
                     {
+                        /*
                         FileStream file = new FileStream(openfile.FileName, FileMode.Open, FileAccess.Read);//Layout就是你的strimg 
                         byte[] xbytes = new byte[file.Length];
                         file.Read(xbytes, 0, (int)file.Length);
                         file.Close();
                         MenuInfoModel model = (MenuInfoModel)this.treeList1.GetDataRecordByNode(this.treeList1.FocusedNode);
                         model.MenuBigImage = xbytes;
+                        */
+                        MenuInfoModel model = (MenuInfoModel)this.treeList1.GetDataRecordByNode(this.treeList1.FocusedNode);
+                        model.MenuBigImage = ImageTools.CreateByteByImagePath(openfile.FileName);
                     }
                 }
                 GC.Collect();
