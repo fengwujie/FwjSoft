@@ -7,8 +7,8 @@
     <ProjectGuid>{91ADBF9F-4492-4BC4-AE64-9BDE7F2D9D7E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FwjSoft.Froms</RootNamespace>
-    <AssemblyName>FwjSoft.Froms</AssemblyName>
+    <RootNamespace>FwjSoft.WinFroms</RootNamespace>
+    <AssemblyName>FwjSoft.WinFroms</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using System.Resources;
 using FwjSoft.Common;
 
-namespace Froms
+namespace FwjSoft.WinFroms
 {
     public partial class FormMain : Form
     {

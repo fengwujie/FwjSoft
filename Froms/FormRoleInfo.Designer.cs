@@ -1,4 +1,4 @@
-﻿namespace FwjSoft.Froms
+﻿namespace FwjSoft.WinFroms
 {
     partial class FormRoleInfo
     {

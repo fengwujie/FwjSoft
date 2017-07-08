@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Froms
+namespace WinFroms
 {
     public partial class Form1 : Form
     {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FwjSoft.Froms
+namespace FwjSoft.WinFroms
 {
     public partial class FormRoleInfo : Form
     {

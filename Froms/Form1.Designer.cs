@@ -1,4 +1,4 @@
-﻿namespace Froms
+﻿namespace WinFroms
 {
     partial class Form1
     {
